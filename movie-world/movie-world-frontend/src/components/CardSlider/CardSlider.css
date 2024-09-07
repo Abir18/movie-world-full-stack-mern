@@ -7,11 +7,20 @@
 .swiper-slide {
   background-position: center;
   background-size: cover;
-  width: 400px;
-  height: 400px;
+  width: 380px;
+  height: 450px;
 }
 
 .swiper-slide img {
   display: block;
   width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 200px;
+    height: 250px;
+  }
 }

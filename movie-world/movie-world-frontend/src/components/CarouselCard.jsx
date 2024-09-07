@@ -89,13 +89,16 @@ function CarouselCard({movieList}) {
                 <p className="flex justify-center items-center text-sm  font-roboto font-medium tracking-wider text-white sm:text-xl mt-2 text-center">
                   <FaStar size="16px" color="yellow" className="mb-2" />{" "}
                   <span className="ml-1 mb-1 ">
-                    {movie.rating}({movie.review})
+                    {movie.rating}
+                    {movie.review && <span>({movie.review})</span>}
                   </span>
-                  <IoMdStarOutline
-                    size="24px"
-                    color="cyan"
-                    className="mb-2 ml-3 hover:cursor-pointer"
-                  />
+                  {movie.review && (
+                    <IoMdStarOutline
+                      size="24px"
+                      color="cyan"
+                      className="mb-2 ml-3 hover:cursor-pointer"
+                    />
+                  )}
                 </p>
                 <button
                   className="h-10 px-8 py-6  flex justify-center items-center gap-2 font-semibold rounded-[35px]  text-white bg-gradient-to-r from-cyan-500 to-blue-800 hover:from-cyan-900"

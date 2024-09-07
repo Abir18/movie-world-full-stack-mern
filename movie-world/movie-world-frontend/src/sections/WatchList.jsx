@@ -7,35 +7,30 @@ const watchListMovies = [
     movieName: "Joker",
     image:
       "https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
-    rating: 4.5,
-    review: 407
+    rating: 4.5
   },
   {
     movieName: "Joker",
     image: "https://i.ebayimg.com/images/g/CwEAAOSwv4xf5cdv/s-l1200.jpg",
-    rating: 4.5,
-    review: 407
+    rating: 4.5
   },
   {
     movieName: "Joker",
     image:
       "https://media.fashionnetwork.com/cdn-cgi/image/fit=contain,width=1500,height=1000,format=auto/m/3be6/8bc0/eb20/8bfc/0f0c/f534/b980/3b5f/37bd/d77d/d77d.jpeg",
-    rating: 4.5,
-    review: 407
+    rating: 4.5
   },
   {
     movieName: "Joker",
     image:
       "https://m.media-amazon.com/images/I/71hGGgSVC1L._AC_UF1000,1000_QL80_.jpg",
-    rating: 4.5,
-    review: 407
+    rating: 4.5
   },
   {
     movieName: "Joker",
     image:
       "https://ew.com/thmb/B0w9qzmQqCZ1tumxv8cBx0aPTrQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/mcddakn_ec005-2000-a3d30c1958fb442486fb1e10ba92dd17.jpg",
-    rating: 4.5,
-    review: 407
+    rating: 4.5
   }
 ];
 
