@@ -1,7 +1,17 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import CardSlider from "../components/CardSlider/CardSlider";
 
 const Upcoming = () => {
+  const [upcomingMovies, setUpcomingMovies] = useState([]);
+  useEffect(() => {
+    fetch(`/api/v1/upcoming-movie/all`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data, "data");
+        setUpcomingMovies(data.data);
+        console.log(upcomingMovies, "upcomingMovies");
+      });
+  }, []);
   return (
     <div className="bg-gradient-to-r from-slate-900 to-black h-screen">
       <div className="flex flex-col justify-center items-center">
@@ -15,7 +25,7 @@ const Upcoming = () => {
       </div>
 
       <div className="mt-4">
-        <CardSlider />
+        <CardSlider upcomingMovies={upcomingMovies} />
       </div>
     </div>
   );

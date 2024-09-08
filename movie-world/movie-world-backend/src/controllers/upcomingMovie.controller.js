@@ -8,6 +8,7 @@ const createUpcomingMovie = asyncHandler(async (req, res) => {
   const {
     movieName,
     description,
+    year,
     episodes,
     videos,
     photos,
@@ -53,6 +54,7 @@ const createUpcomingMovie = asyncHandler(async (req, res) => {
   const upcomingMovie = await UpcomingMovie.create({
     movieName,
     description,
+    year,
     episodes,
     videos,
     photos,

@@ -9,6 +9,7 @@ const upcomingMovieSchema = new Schema(
       type: String,
       required: true
     },
+    year: String,
     episodes: {
       type: Number
     },
