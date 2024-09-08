@@ -1,47 +1,70 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import CarouselCard from "../components/CarouselCard";
 
 // const ratedMovieList = [];
 
-const ratedMovieList = [
-  {
-    movieName: "Joker",
-    image:
-      "https://media.fashionnetwork.com/cdn-cgi/image/fit=contain,width=1500,height=1000,format=auto/m/3be6/8bc0/eb20/8bfc/0f0c/f534/b980/3b5f/37bd/d77d/d77d.jpeg",
-    rating: 4.5,
-    review: 407
-  },
-  {
-    movieName: "Joker",
-    image:
-      "https://res.cloudinary.com/drayzz6ru/image/upload/v1725262419/bhie5dmrih3z1x5jo9bo.jpg",
-    rating: 4.5,
-    review: 407
-  },
-  {
-    movieName: "Joker",
-    image:
-      "https://media.fashionnetwork.com/cdn-cgi/image/fit=contain,width=1500,height=1000,format=auto/m/3be6/8bc0/eb20/8bfc/0f0c/f534/b980/3b5f/37bd/d77d/d77d.jpeg",
-    rating: 4.5,
-    review: 407
-  },
-  {
-    movieName: "Joker",
-    image:
-      "https://media.fashionnetwork.com/cdn-cgi/image/fit=contain,width=1500,height=1000,format=auto/m/3be6/8bc0/eb20/8bfc/0f0c/f534/b980/3b5f/37bd/d77d/d77d.jpeg",
-    rating: 4.5,
-    review: 407
-  },
-  {
-    movieName: "Joker",
-    image:
-      "https://media.fashionnetwork.com/cdn-cgi/image/fit=contain,width=1500,height=1000,format=auto/m/3be6/8bc0/eb20/8bfc/0f0c/f534/b980/3b5f/37bd/d77d/d77d.jpeg",
-    rating: 4.5,
-    review: 407
-  }
-];
+// const ratedMovieList = [
+//   {
+//     movieName: "Joker",
+//     image:
+//       "https://media.fashionnetwork.com/cdn-cgi/image/fit=contain,width=1500,height=1000,format=auto/m/3be6/8bc0/eb20/8bfc/0f0c/f534/b980/3b5f/37bd/d77d/d77d.jpeg",
+//     rating: 4.5,
+//     review: 407
+//   },
+//   {
+//     movieName: "Joker",
+//     image:
+//       "https://res.cloudinary.com/drayzz6ru/image/upload/v1725262419/bhie5dmrih3z1x5jo9bo.jpg",
+//     rating: 4.5,
+//     review: 407
+//   },
+//   {
+//     movieName: "Joker",
+//     image:
+//       "https://media.fashionnetwork.com/cdn-cgi/image/fit=contain,width=1500,height=1000,format=auto/m/3be6/8bc0/eb20/8bfc/0f0c/f534/b980/3b5f/37bd/d77d/d77d.jpeg",
+//     rating: 4.5,
+//     review: 407
+//   },
+//   {
+//     movieName: "Joker",
+//     image:
+//       "https://media.fashionnetwork.com/cdn-cgi/image/fit=contain,width=1500,height=1000,format=auto/m/3be6/8bc0/eb20/8bfc/0f0c/f534/b980/3b5f/37bd/d77d/d77d.jpeg",
+//     rating: 4.5,
+//     review: 407
+//   },
+//   {
+//     movieName: "Joker",
+//     image:
+//       "https://media.fashionnetwork.com/cdn-cgi/image/fit=contain,width=1500,height=1000,format=auto/m/3be6/8bc0/eb20/8bfc/0f0c/f534/b980/3b5f/37bd/d77d/d77d.jpeg",
+//     rating: 4.5,
+//     review: 407
+//   }
+// ];
 
 const RatedMovies = () => {
+  const [movies, setMovies] = useState([]);
+  const [ratedMovies, setRatedMovies] = useState([]);
+  useEffect(() => {
+    fetch(`/api/v1/movies/all`)
+      .then((res) => res.json())
+      .then((data) => {
+        setMovies(data.data);
+
+        // const ratedMovies = movies.filter((movie) => movie.givenRating);
+        // setRatedMovies(ratedMovies);
+        // console.log(data, "data");
+        // console.log(movies, "movies");
+        // console.log(ratedMovies, "ratedMovies");
+      });
+  }, []);
+
+  useEffect(() => {
+    console.log(movies, "movies");
+    const ratedMovies = movies.filter((movie) => movie.givenRating);
+    setRatedMovies(ratedMovies);
+    console.log(ratedMovies, "ratedMovies");
+  }, [movies]);
+
   return (
     <div className="bg-gradient-to-r from-black to-slate-900 h-screen">
       <div className="flex flex-col justify-center items-center">
@@ -51,7 +74,7 @@ const RatedMovies = () => {
         </h1>
       </div>
       <div className="mt-12">
-        <CarouselCard movieList={ratedMovieList} />
+        <CarouselCard movieList={ratedMovies} watch={true} />
       </div>
     </div>
   );

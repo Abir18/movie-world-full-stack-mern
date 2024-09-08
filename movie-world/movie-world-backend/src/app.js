@@ -19,9 +19,9 @@ app.get("/", (req, res) => {
 });
 
 // routes import
-import upcomingMovieRouter from "./routes/upcomingMovie.routes.js";
+import movieRouter from "./routes/movie.routes.js";
 
 // routes declaration
-app.use("/api/v1/upcoming-movie", upcomingMovieRouter);
+app.use("/api/v1/movies", movieRouter);
 
 export {app};

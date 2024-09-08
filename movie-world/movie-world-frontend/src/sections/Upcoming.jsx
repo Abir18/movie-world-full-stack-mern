@@ -4,7 +4,7 @@ import CardSlider from "../components/CardSlider/CardSlider";
 const Upcoming = () => {
   const [upcomingMovies, setUpcomingMovies] = useState([]);
   useEffect(() => {
-    fetch(`/api/v1/upcoming-movie/all`)
+    fetch(`/api/v1/movies/all-upcoming`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data, "data");
@@ -13,7 +13,7 @@ const Upcoming = () => {
       });
   }, []);
   return (
-    <div className="bg-gradient-to-r from-slate-900 to-black h-screen">
+    <div className="bg-gradient-to-r from-slate-900 to-black h-[110vh]">
       <div className="flex flex-col justify-center items-center">
         <h1 className="text-2xl font-oswald font-semibold tracking-tight text-white sm:text-4xl uppercase pt-20">
           <span className=" text-[#0399FA]">Upcoming</span>{" "}
@@ -24,7 +24,7 @@ const Upcoming = () => {
         </p>
       </div>
 
-      <div className="mt-4">
+      <div className="mt-4 ">
         <CardSlider upcomingMovies={upcomingMovies} />
       </div>
     </div>

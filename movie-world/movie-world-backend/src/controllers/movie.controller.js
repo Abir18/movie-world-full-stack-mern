@@ -1,10 +1,10 @@
-import {UpcomingMovie} from "../models/upcomingMovie.model.js";
+import {Movie} from "../models/movie.model.js";
 import {ApiError} from "../utils/ApiError.js";
 import {ApiResponse} from "../utils/ApiResponse.js";
 import {asyncHandler} from "../utils/asyncHandler.js";
 import {uploadOnCloudinary} from "../utils/cloudinary.js";
 
-const createUpcomingMovie = asyncHandler(async (req, res) => {
+const createMovie = asyncHandler(async (req, res) => {
   const {
     movieName,
     description,
@@ -15,7 +15,10 @@ const createUpcomingMovie = asyncHandler(async (req, res) => {
     cast,
     creator,
     rating,
-    review
+    review,
+    upcoming,
+    givenRating,
+    addedToWatchList
   } = req.body;
 
   //   if (
@@ -25,13 +28,31 @@ const createUpcomingMovie = asyncHandler(async (req, res) => {
   //   }
 
   if (!movieName) {
-    throw new ApiError(400, "Movie name is requied");
+    throw new ApiError(400, "movieName field is requied");
+  }
+  if (!year) {
+    throw new ApiError(400, "year field is requied");
+  }
+  if (!cast) {
+    throw new ApiError(400, "cast field is requied");
+  }
+  if (!rating) {
+    throw new ApiError(400, "rating field is requied");
   }
 
-  console.log(req.file, "reqFile");
+  if (!upcoming) {
+    throw new ApiError(400, "upcoming field is requied");
+  }
+  if (!givenRating) {
+    throw new ApiError(400, "givenRating field is requied");
+  }
+  if (!addedToWatchList) {
+    throw new ApiError(400, "addedToWatchList field is requied");
+  }
+
+  console.log(req.files, "reqFile");
 
   let posterImageLocalPath;
-  // let posterImageLocalPath = (posterImageLocalPath = req.file?.poster[0]?.path);
 
   if (
     req.files &&
@@ -51,7 +72,7 @@ const createUpcomingMovie = asyncHandler(async (req, res) => {
     throw new ApiError(400, "Movie poster image file is required");
   }
 
-  const upcomingMovie = await UpcomingMovie.create({
+  const createdMovie = await Movie.create({
     movieName,
     description,
     year,
@@ -62,21 +83,29 @@ const createUpcomingMovie = asyncHandler(async (req, res) => {
     creator,
     rating,
     review,
+    upcoming,
+    givenRating,
+    addedToWatchList,
     poster: poster.url
   });
 
   return res
     .status(201)
     .json(
-      new ApiResponse(200, upcomingMovie, "Upcoming movie created successfully")
+      new ApiResponse(200, createdMovie, "Upcoming movie created successfully")
     );
 });
 
+const allMovies = async (req, res) => {
+  const all = await Movie.find({});
+  return res.status(200).json(new ApiResponse(200, all, "All movies "));
+};
+
 const allUpcomingMovie = async (req, res) => {
-  const all = await UpcomingMovie.find({});
+  const all = await Movie.find({upcoming: true});
   return res
     .status(200)
     .json(new ApiResponse(200, all, "All Upcoming movies "));
 };
 
-export {allUpcomingMovie, createUpcomingMovie};
+export {allMovies, allUpcomingMovie, createMovie};

@@ -111,71 +111,23 @@ export default function CardSlider({upcomingMovies}) {
         }}
         pagination={false}
         modules={[EffectCoverflow, Pagination]}
-        className="swiper"
+        className="swiper "
       >
         {upcomingMovies.map((movie) => (
           <SwiperSlide
             key={movie._id}
-            className="bg-slate-200 bg-opacity-20 rounded-lg"
+            className="bg-slate-200 bg-opacity-20 rounded-xl border-4 border-cyan-500 "
           >
             <img
-              className=" w-[150px] h-[200px] sm:h-[400px] sm:w-full"
+              className=" w-[150px] h-[200px] sm:h-[400px] sm:w-full rounded-t-xl"
               src={movie.poster}
               alt={movie.movieName}
             />
-            <p className="text-xl font-oswald font-medium tracking-wider text-white sm:text-xl mt-2 text-center uppercase">
-              {movie.movieName} {movie.year && <span>({movie.year})</span>}
-            </p>
-            <p className="text-xl font-oswald font-medium tracking-wider text-white sm:text-xl mt-2 text-center ">
-              {movie.cast.map((val) => (
-                <p key={val}>{val}</p>
-              ))}
+            <p className="text-lg font-oswald font-bold tracking-wider text-white sm:text-3xl mt-2 text-center uppercase">
+              {movie.movieName}
             </p>
           </SwiperSlide>
         ))}
-        {/* <SwiperSlide>
-          <img
-            className="w-full h-[380px] rounded-xl"
-            src="https://i.ebayimg.com/images/g/CwEAAOSwv4xf5cdv/s-l1200.jpg"
-          />
-          <p className="text-xl font-poppins font-medium tracking-wider text-white sm:text-xl mt-2 text-center">
-            Batman
-          </p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            className="w-full h-[350px] rounded-xl"
-            src="https://m.media-amazon.com/images/I/71hGGgSVC1L._AC_UF1000,1000_QL80_.jpg"
-          />
-          <p className="text-xl font-poppins font-medium tracking-wider text-white sm:text-xl mt-2 text-center">
-            Batman
-          </p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={cover} className="w-full h-[380px] rounded-xl" />
-          <p className="text-xl font-poppins font-medium tracking-wider text-white sm:text-xl mt-2 text-center">
-            Batman
-          </p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg" />
-          <h1>hello</h1>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://m.media-amazon.com/images/I/71hGGgSVC1L._AC_UF1000,1000_QL80_.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://ew.com/thmb/B0w9qzmQqCZ1tumxv8cBx0aPTrQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/mcddakn_ec005-2000-a3d30c1958fb442486fb1e10ba92dd17.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://media.fashionnetwork.com/cdn-cgi/image/fit=contain,width=1500,height=1000,format=auto/m/3be6/8bc0/eb20/8bfc/0f0c/f534/b980/3b5f/37bd/d77d/d77d.jpeg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://i.ebayimg.com/images/g/CwEAAOSwv4xf5cdv/s-l1200.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://ew.com/thmb/B0w9qzmQqCZ1tumxv8cBx0aPTrQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/mcddakn_ec005-2000-a3d30c1958fb442486fb1e10ba92dd17.jpg" />
-        </SwiperSlide> */}
       </Swiper>
     </>
   );

@@ -1,8 +1,9 @@
 import {Router} from "express";
 import {
+  allMovies,
   allUpcomingMovie,
-  createUpcomingMovie
-} from "../controllers/upcomingMovie.controller.js";
+  createMovie
+} from "../controllers/movie.controller.js";
 import {upload} from "../middlewares/multer.middleware.js";
 
 const router = Router();
@@ -19,9 +20,10 @@ router.route("/create").post(
       maxCount: 1
     }
   ]),
-  createUpcomingMovie
+  createMovie
 );
 
-router.route("/all").get(allUpcomingMovie);
+router.route("/all-upcoming").get(allUpcomingMovie);
+router.route("/all").get(allMovies);
 
 export default router;
