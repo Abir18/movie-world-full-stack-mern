@@ -1,23 +1,57 @@
-// import coverImage from "./assets/images/cover.jpg";
-
-import AddedMovies from "./sections/AddedMovies";
+import {RouterProvider, createBrowserRouter} from "react-router-dom";
+import Layout from "./Layout";
+import Navbar from "./components/Navbar";
 import Footer from "./sections/Footer";
-import Hero from "./sections/Hero";
-import MoviePanel from "./sections/MoviePanel";
+import MovieDetails from "./sections/MovieDetails";
 import RatedMovies from "./sections/RatedMovies";
-import Upcoming from "./sections/Upcoming";
 import {WatchList} from "./sections/WatchList";
 
 const App = () => {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <>
+          {/* <Navbar /> */}
+          <Layout />
+          <Footer />
+        </>
+      )
+    },
+    {
+      path: "/movie-details/:id",
+      element: (
+        <>
+          <Navbar />
+          <MovieDetails />
+          <Footer />
+        </>
+      )
+    },
+    {
+      path: "/movies",
+      element: (
+        <>
+          <Navbar />
+          <RatedMovies />
+          <Footer />
+        </>
+      )
+    },
+    {
+      path: "/watch-list",
+      element: (
+        <>
+          <Navbar />
+          <WatchList />
+          <Footer />
+        </>
+      )
+    }
+  ]);
   return (
     <div>
-      <Hero />
-      <Upcoming />
-      <MoviePanel />
-      <RatedMovies />
-      <WatchList />
-      <AddedMovies />
-      <Footer />
+      <RouterProvider router={router} />
     </div>
   );
 };

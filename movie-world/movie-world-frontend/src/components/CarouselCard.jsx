@@ -10,6 +10,7 @@ import {FaChevronLeft, FaChevronRight} from "react-icons/fa6";
 import {GoPlus} from "react-icons/go";
 import {IoMdStarOutline} from "react-icons/io";
 import {LuPlayCircle} from "react-icons/lu";
+import {Link} from "react-router-dom";
 
 function SamplePrevArrow(props) {
   const {className, style, onClick} = props;
@@ -33,7 +34,9 @@ function CarouselCard({movieList, watch}) {
   var settings = {
     dots: false,
     infinite: true,
-    speed: 500,
+    autoplay: true,
+    autoplaySpeed: 1000,
+    speed: 1000,
     slidesToShow: 5,
     slidesToScroll: 1,
     initialSlide: 0,
@@ -69,56 +72,68 @@ function CarouselCard({movieList, watch}) {
   };
   return (
     <div className="w-[90%] sm:w-[85%] m-auto ">
-      <Slider {...settings}>
-        {movieList.map((movie) => (
-          <div
-            key={movie.movieName}
-            className=" w-[300px] h-[500px] bg-[#13171A] rounded-xl "
-          >
-            <div className="rounded-xl">
-              <img
-                src={movie.poster}
-                alt={movie.movieName}
-                className="w-full h-[300px] rounded-t-xl"
-              />
+      {movieList.length > 0 ? (
+        <Slider {...settings}>
+          {movieList.map((movie) => (
+            <div
+              key={movie.movieName}
+              className=" w-[300px] h-[500px] bg-[#13171A] rounded-xl "
+            >
+              <div className="rounded-xl">
+                <img
+                  src={movie.poster}
+                  alt={movie.movieName}
+                  className="w-full h-[300px] rounded-t-xl cursor-pointer"
+                />
+              </div>
+
+              <div className="flex flex-col items-start gap-y-2 mt-2 ml-6 sm:ml-4">
+                <p className="text-xl  font-oswald uppercase font-medium tracking-tight text-white sm:text-2xl mt-2 text-center">
+                  <Link to={`/movie-details/${movie._id}`}>
+                    {movie.movieName}
+                  </Link>
+                </p>
+                <p className="flex justify-center items-center text-sm  font-roboto font-medium tracking-wider text-white sm:text-xl mt-2 text-center">
+                  <FaStar size="16px" color="yellow" className="mb-2" />{" "}
+                  <span className="ml-1 mb-1 ">
+                    {movie.rating}
+                    {watch && movie.review && <span>({movie.review})</span>}
+                  </span>
+                  {watch && movie.review && (
+                    <IoMdStarOutline
+                      size="24px"
+                      color="cyan"
+                      className="mb-2 ml-3 hover:cursor-pointer"
+                    />
+                  )}
+                </p>
+                <button
+                  className="h-10 px-8 py-6  flex justify-center items-center gap-2 font-semibold rounded-[35px]  text-white bg-gradient-to-r from-cyan-500 to-blue-800 hover:from-cyan-900"
+                  type="submit"
+                >
+                  {movie.addedToWatchList ? (
+                    <BsCheck2 size="24px" />
+                  ) : (
+                    <GoPlus size="24px" />
+                  )}
+                  WATCH LIST
+                </button>
+                <p className="flex text-sm  font-roboto font-medium tracking-wider text-white sm:text-sm mt-2 text-center hover:cursor-pointer">
+                  <LuPlayCircle size="20px" className="mb-2 mr-2" />
+                  TRAILER
+                </p>
+              </div>
             </div>
-            <div className="flex flex-col items-start gap-y-2 mt-2 ml-6 sm:ml-4">
-              <p className="text-xl  font-oswald uppercase font-medium tracking-tight text-white sm:text-2xl mt-2 text-center">
-                {movie.movieName}
-              </p>
-              <p className="flex justify-center items-center text-sm  font-roboto font-medium tracking-wider text-white sm:text-xl mt-2 text-center">
-                <FaStar size="16px" color="yellow" className="mb-2" />{" "}
-                <span className="ml-1 mb-1 ">
-                  {movie.rating}
-                  {watch && movie.review && <span>({movie.review})</span>}
-                </span>
-                {watch && movie.review && (
-                  <IoMdStarOutline
-                    size="24px"
-                    color="cyan"
-                    className="mb-2 ml-3 hover:cursor-pointer"
-                  />
-                )}
-              </p>
-              <button
-                className="h-10 px-8 py-6  flex justify-center items-center gap-2 font-semibold rounded-[35px]  text-white bg-gradient-to-r from-cyan-500 to-blue-800 hover:from-cyan-900"
-                type="submit"
-              >
-                {movie.addedToWatchList ? (
-                  <BsCheck2 size="24px" />
-                ) : (
-                  <GoPlus size="24px" />
-                )}
-                WATCH LIST
-              </button>
-              <p className="flex text-sm  font-roboto font-medium tracking-wider text-white sm:text-sm mt-2 text-center hover:cursor-pointer">
-                <LuPlayCircle size="20px" className="mb-2 mr-2" />
-                TRAILER
-              </p>
-            </div>
-          </div>
-        ))}
-      </Slider>
+          ))}
+        </Slider>
+      ) : (
+        <div className="flex flex-col justify-center items-center">
+          <h1 className="text-2xl font-oswald font-semibold tracking-tight text-white sm:text-5xl uppercase pt-16">
+            <span className=" text-[#0399FA]">No </span>
+            <span className="text-[#F5C519]">MOVIES </span>
+          </h1>
+        </div>
+      )}
     </div>
   );
 }

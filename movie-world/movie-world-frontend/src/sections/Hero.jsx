@@ -2,9 +2,10 @@ import React from "react";
 import Navbar from "../components/Navbar";
 
 const Hero = () => {
+  // const [bg, setBg] = useState(true);
   return (
-    <div className="bg-[url('assets/images/cover.jpg')] bg-cover h-screen ">
-      <Navbar />
+    <div className="bg-[url('assets/images/cover.jpg')] bg-cover h-[70vh] sm:h-screen ">
+      <Navbar bg={true} />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="text-start mt-20 ml-6 sm:mt-40 sm:ml-40">
           <h1 className="text-5xl font-oswald font-semibold   text-[#0399FA] sm:text-6xl uppercase">

@@ -49,12 +49,6 @@ const RatedMovies = () => {
       .then((res) => res.json())
       .then((data) => {
         setMovies(data.data);
-
-        // const ratedMovies = movies.filter((movie) => movie.givenRating);
-        // setRatedMovies(ratedMovies);
-        // console.log(data, "data");
-        // console.log(movies, "movies");
-        // console.log(ratedMovies, "ratedMovies");
       });
   }, []);
 

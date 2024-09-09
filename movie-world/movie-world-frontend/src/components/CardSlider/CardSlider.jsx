@@ -8,6 +8,7 @@ import "swiper/css/pagination";
 import "./CardSlider.css";
 
 // import required modules
+import {Link} from "react-router-dom";
 import {EffectCoverflow, Pagination} from "swiper/modules";
 
 // const upcomingMovies = [
@@ -124,7 +125,7 @@ export default function CardSlider({upcomingMovies}) {
               alt={movie.movieName}
             />
             <p className="text-lg font-oswald font-bold tracking-wider text-white sm:text-3xl mt-2 text-center uppercase">
-              {movie.movieName}
+              <Link to={`/movie-details/${movie._id}`}>{movie.movieName}</Link>
             </p>
           </SwiperSlide>
         ))}
