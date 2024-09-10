@@ -2,13 +2,16 @@ import {Router} from "express";
 import {
   allMovies,
   allUpcomingMovie,
-  createMovie
+  createMovie,
+  toggleWatchList
 } from "../controllers/movie.controller.js";
 import {upload} from "../middlewares/multer.middleware.js";
 
 const router = Router();
 
 // router.route("/create").post(upload.single("poster"), createUpcomingMovie);
+
+// POST
 router.route("/create").post(
   upload.fields([
     {
@@ -23,7 +26,11 @@ router.route("/create").post(
   createMovie
 );
 
+// GET
 router.route("/all-upcoming").get(allUpcomingMovie);
 router.route("/all").get(allMovies);
+
+// PUT
+router.route("/:id").put(toggleWatchList);
 
 export default router;

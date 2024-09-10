@@ -48,13 +48,13 @@ export const WatchList = () => {
         // console.log(movies, "movies");
         // console.log(ratedMovies, "ratedMovies");
       });
-  }, []);
+  }, [movies]);
 
   useEffect(() => {
-    console.log(movies, "movies");
+    // console.log(movies, "movies");
     const watchListMovies = movies.filter((movie) => movie.addedToWatchList);
     setMyWatchListMovies(watchListMovies);
-    console.log(myWatchListMovies, "ratedMovies");
+    // console.log(myWatchListMovies, "ratedMovies");
   }, [movies]);
 
   return (
@@ -67,7 +67,12 @@ export const WatchList = () => {
         </h1>
       </div>
       <div className="relative pt-12">
-        <CarouselCard movieList={myWatchListMovies} watch={false} />
+        <CarouselCard
+          movieList={myWatchListMovies}
+          // movieList={movies}
+          setMovies={setMovies}
+          watch={false}
+        />
       </div>
     </div>
   );

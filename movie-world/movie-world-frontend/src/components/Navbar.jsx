@@ -9,7 +9,6 @@ const navigation = [
 ];
 
 const Navbar = ({bg}) => {
-  console.log(bg, "bg");
   return (
     <nav
       aria-label="Global"

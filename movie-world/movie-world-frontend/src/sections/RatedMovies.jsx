@@ -53,14 +53,14 @@ const RatedMovies = () => {
   }, []);
 
   useEffect(() => {
-    console.log(movies, "movies");
-    const ratedMovies = movies.filter((movie) => movie.givenRating);
-    setRatedMovies(ratedMovies);
-    console.log(ratedMovies, "ratedMovies");
+    // console.log(movies, "movies");
+    const filteredMovies = movies.filter((movie) => movie.givenRating);
+    setRatedMovies(filteredMovies);
+    // console.log(ratedMovies, "ratedMovies");
   }, [movies]);
 
   return (
-    <div className="bg-gradient-to-r from-black to-slate-900 h-screen">
+    <div className="bg-gradient-to-r from-black to-slate-900 min-h-screen sm:h-[120vh] ">
       <div className="flex flex-col justify-center items-center">
         <h1 className="text-2xl font-oswald font-semibold tracking-tight text-white sm:text-5xl uppercase pt-16">
           <span className="text-[#F5C519]">MOVIES </span>
@@ -68,7 +68,12 @@ const RatedMovies = () => {
         </h1>
       </div>
       <div className="mt-12">
-        <CarouselCard movieList={ratedMovies} watch={true} />
+        <CarouselCard
+          movieList={movies}
+          setMovies={setMovies}
+          watch={true}
+          // onClick={updateWatchList}
+        />
       </div>
     </div>
   );

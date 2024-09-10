@@ -2,7 +2,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 
-import React from "react";
+import React, {useState} from "react";
 import {FaStar} from "react-icons/fa";
 
 import {BsCheck2} from "react-icons/bs";
@@ -30,15 +30,45 @@ function SampleNextArrow(props) {
   );
 }
 
-function CarouselCard({movieList, watch}) {
+function CarouselCard({movieList, watch, setMovies, onClick}) {
+  const [moviesf, setMoviesf] = useState(movieList);
+
+  const requestOptions = {
+    method: "PUT", // Specify the request method
+    headers: {"Content-Type": "application/json"} // Specify the content type
+    // body: JSON.stringify(data) // Send the data in JSON format
+  };
+
+  const updateWatchList = (id) => {
+    fetch(`/api/v1/movies/${id}`, requestOptions)
+      .then((res) => res.json())
+      .then((data) => {
+        const update = movieList.find((movie) => movie._id === id);
+        update.addedToWatchList = !update.addedToWatchList;
+        console.log(update, "update");
+
+        setMovies(movieList.map((item) => (item._id === id ? update : item)));
+
+        console.log(movieList, "movies");
+      });
+  };
+
+  // console.log(moviesf, "moviesf");
+
+  // console.log("hello");
+
+  // useEffect(() => {}, []);
+
+  // const animate = watch ? false : true;
   var settings = {
     dots: false,
     infinite: true,
-    autoplay: true,
-    autoplaySpeed: 1000,
-    speed: 1000,
+    // autoplay: animate,
+    autoplaySpeed: 500,
+    speed: 2000,
+    draggable: false,
     slidesToShow: 5,
-    slidesToScroll: 1,
+    slidesToScroll: 5,
     initialSlide: 0,
     nextArrow: <SampleNextArrow to="next" />,
     prevArrow: <SamplePrevArrow to="prev" />,
@@ -76,15 +106,17 @@ function CarouselCard({movieList, watch}) {
         <Slider {...settings}>
           {movieList.map((movie) => (
             <div
-              key={movie.movieName}
+              key={movie._id}
               className=" w-[300px] h-[500px] bg-[#13171A] rounded-xl "
             >
               <div className="rounded-xl">
-                <img
-                  src={movie.poster}
-                  alt={movie.movieName}
-                  className="w-full h-[300px] rounded-t-xl cursor-pointer"
-                />
+                <Link to={`/movie-details/${movie._id}`}>
+                  <img
+                    src={movie.poster}
+                    alt={movie.movieName}
+                    className="w-full h-[300px] rounded-t-xl cursor-pointer"
+                  />
+                </Link>
               </div>
 
               <div className="flex flex-col items-start gap-y-2 mt-2 ml-6 sm:ml-4">
@@ -110,6 +142,11 @@ function CarouselCard({movieList, watch}) {
                 <button
                   className="h-10 px-8 py-6  flex justify-center items-center gap-2 font-semibold rounded-[35px]  text-white bg-gradient-to-r from-cyan-500 to-blue-800 hover:from-cyan-900"
                   type="submit"
+                  onClick={() => {
+                    // movie.addedToWatchList = !movie.addedToWatchList;
+                    updateWatchList(movie._id);
+                    // onClick(movie._id);
+                  }}
                 >
                   {movie.addedToWatchList ? (
                     <BsCheck2 size="24px" />
@@ -130,7 +167,7 @@ function CarouselCard({movieList, watch}) {
         <div className="flex flex-col justify-center items-center">
           <h1 className="text-2xl font-oswald font-semibold tracking-tight text-white sm:text-5xl uppercase pt-16">
             <span className=" text-[#0399FA]">No </span>
-            <span className="text-[#F5C519]">MOVIES </span>
+            <span className="text-white">MOVIES </span>
           </h1>
         </div>
       )}

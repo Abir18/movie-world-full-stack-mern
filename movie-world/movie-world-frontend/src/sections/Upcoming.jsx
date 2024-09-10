@@ -3,13 +3,13 @@ import CardSlider from "../components/CardSlider/CardSlider";
 
 const Upcoming = () => {
   const [upcomingMovies, setUpcomingMovies] = useState([]);
+  // console.log(upcomingMovies, "upcomingMovies");
   useEffect(() => {
     fetch(`/api/v1/movies/all-upcoming`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data, "data");
+        // console.log(data, "data");
         setUpcomingMovies(data.data);
-        console.log(upcomingMovies, "upcomingMovies");
       });
   }, []);
   return (

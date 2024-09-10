@@ -108,4 +108,33 @@ const allUpcomingMovie = async (req, res) => {
     .json(new ApiResponse(200, all, "All Upcoming movies "));
 };
 
+export const toggleWatchList = async (req, res) => {
+  const {id} = req.params;
+
+  console.log(id);
+  const matched = await Movie.findById(id);
+  // console.log(matched, "matched");
+
+  const prev = matched.addedToWatchList;
+  // console.log(prev, "addedToWatchList");
+
+  const updatedWatchList = await Movie.findByIdAndUpdate(
+    id,
+    {
+      $set: {
+        addedToWatchList: !prev
+      }
+    },
+    {new: true}
+  ).select("movieName addedToWatchList");
+
+  console.log(updatedWatchList, "updatedWatchList");
+
+  return res
+    .status(200)
+    .json(
+      new ApiResponse(200, updatedWatchList, "Updated movie successfully.")
+    );
+};
+
 export {allMovies, allUpcomingMovie, createMovie};
