@@ -114,7 +114,7 @@ function CarouselCard({movieList, watch, setMovies, onClick}) {
                   <img
                     src={movie.poster}
                     alt={movie.movieName}
-                    className="w-full h-[300px] rounded-t-xl cursor-pointer"
+                    className="w-full h-[300px] rounded-t-xl cursor-pointer object-cover"
                   />
                 </Link>
               </div>

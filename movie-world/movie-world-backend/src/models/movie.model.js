@@ -38,6 +38,10 @@ const movieSchema = new Schema(
       type: Boolean,
       required: true
     },
+    addedToLibrary: {
+      type: Boolean,
+      default: false
+    },
     givenRating: {
       type: Boolean,
       required: true

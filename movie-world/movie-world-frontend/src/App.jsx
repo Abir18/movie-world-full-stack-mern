@@ -1,9 +1,9 @@
 import {RouterProvider, createBrowserRouter} from "react-router-dom";
 import Layout from "./Layout";
 import Navbar from "./components/Navbar";
+import AllMovies from "./sections/AllMovies";
 import Footer from "./sections/Footer";
 import MovieDetails from "./sections/MovieDetails";
-import RatedMovies from "./sections/RatedMovies";
 import {WatchList} from "./sections/WatchList";
 
 const App = () => {
@@ -33,7 +33,7 @@ const App = () => {
       element: (
         <>
           <Navbar />
-          <RatedMovies />
+          <AllMovies />
           <Footer />
         </>
       )

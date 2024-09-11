@@ -18,7 +18,8 @@ const createMovie = asyncHandler(async (req, res) => {
     review,
     upcoming,
     givenRating,
-    addedToWatchList
+    addedToWatchList,
+    addedToLibrary
   } = req.body;
 
   //   if (

@@ -38,7 +38,7 @@ const MovieDetails = () => {
               <img
                 src={matchedMovies?.poster}
                 alt={matchedMovies?.movieName}
-                className="w-[300px] h-[400px] rounded-xl"
+                className="w-[300px] h-[400px] rounded-xl object-cover"
               />
             </div>
             <div className="font-poppins font-medium uppercase text-xl pt-4">
@@ -69,7 +69,7 @@ const MovieDetails = () => {
                 <img
                   src={matchedMovies?.poster}
                   alt={matchedMovies?.movieName}
-                  className="w-full sm:w-[750px] h-[400px] "
+                  className="w-full sm:w-[750px] h-[400px] object-cover"
                 />
                 <div className="absolute top-[40%] left-[35%]">
                   <p className="flex text-xl  font-roboto font-bold tracking-wider text-white sm:text-2xl  text-center hover:cursor-pointer">
@@ -145,7 +145,7 @@ const MovieDetails = () => {
               <div>
                 <figure className="rounded-xl p-8">
                   <img
-                    className="w-24 h-24 rounded-full mx-auto"
+                    className="w-24 h-24 rounded-full mx-auto object-cover"
                     src={matchedMovies?.poster}
                     alt=""
                     width="384"
