@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import CarouselCard from "../components/CarouselCard";
 
 // const watchListMovies = [
@@ -36,19 +36,18 @@ import CarouselCard from "../components/CarouselCard";
 export const WatchList = () => {
   const [movies, setMovies] = useState([]);
   const [myWatchListMovies, setMyWatchListMovies] = useState([]);
-  useEffect(() => {
+
+  const fetchAllMovies = useCallback(() => {
     fetch(`/api/v1/movies/all`)
       .then((res) => res.json())
       .then((data) => {
         setMovies(data.data);
-
-        // const ratedMovies = movies.filter((movie) => movie.givenRating);
-        // setRatedMovies(ratedMovies);
-        // console.log(data, "data");
-        // console.log(movies, "movies");
-        // console.log(ratedMovies, "ratedMovies");
       });
   }, [movies]);
+
+  useEffect(() => {
+    fetchAllMovies();
+  }, [fetchAllMovies]);
 
   useEffect(() => {
     // console.log(movies, "movies");

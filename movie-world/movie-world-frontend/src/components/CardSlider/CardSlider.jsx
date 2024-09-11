@@ -115,12 +115,9 @@ export default function CardSlider({upcomingMovies}) {
         className="swiper "
       >
         {upcomingMovies.map((movie) => (
-          <SwiperSlide
-            key={movie._id}
-            className="bg-slate-200 bg-opacity-20 rounded-xl "
-          >
+          <SwiperSlide key={movie._id} className="bg-slate-200 bg-opacity-20  ">
             <img
-              className=" w-[150px] h-[200px] sm:h-[400px] sm:w-full rounded-t-xl"
+              className=" w-[150px] h-[200px] sm:h-[400px] sm:w-full object-cover"
               src={movie.poster}
               alt={movie.movieName}
             />

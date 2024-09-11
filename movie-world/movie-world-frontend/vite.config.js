@@ -5,7 +5,7 @@ import {defineConfig} from "vite";
 export default defineConfig({
   server: {
     proxy: {
-      "/api": "http://localhost:8000"
+      "/api": "https://movie-world-full-stack.onrender.com"
     }
   },
   plugins: [react()]
