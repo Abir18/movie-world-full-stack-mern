@@ -40,7 +40,7 @@ function CarouselCard({movieList, watch, setMovies, onClick}) {
   };
 
   const updateWatchList = (id) => {
-    fetch(`/api/v1/movies/${id}`, requestOptions)
+    fetch(`${import.meta.env.VITE_SERVER}/api/v1/movies/${id}`, requestOptions)
       .then((res) => res.json())
       .then((data) => {
         const update = movieList.find((movie) => movie._id === id);
@@ -59,13 +59,13 @@ function CarouselCard({movieList, watch, setMovies, onClick}) {
 
   // useEffect(() => {}, []);
 
-  // const animate = watch ? false : true;
+  const animate = watch === "watch" ? false : true;
   var settings = {
     dots: false,
     infinite: true,
     // autoplay: animate,
-    autoplaySpeed: 500,
-    speed: 2000,
+    autoplaySpeed: 1000,
+    speed: 1000,
     draggable: false,
     slidesToShow: 5,
     slidesToScroll: 5,

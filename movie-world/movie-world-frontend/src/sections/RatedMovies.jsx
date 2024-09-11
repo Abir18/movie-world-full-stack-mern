@@ -71,7 +71,7 @@ const RatedMovies = () => {
         <CarouselCard
           movieList={movies}
           setMovies={setMovies}
-          watch={true}
+          watch={"rated"}
           // onClick={updateWatchList}
         />
       </div>

@@ -70,7 +70,7 @@ export const WatchList = () => {
           movieList={myWatchListMovies}
           // movieList={movies}
           setMovies={setMovies}
-          watch={false}
+          watch={"watch"}
         />
       </div>
     </div>

@@ -32,7 +32,7 @@ const MovieDetails = () => {
   return (
     <div>
       <div className="min-h-screen bg-black sm:px-40 pb-8">
-        <div className="grid  sm:grid-cols-3 grid-cols-1">
+        <div className="grid  sm:grid-cols-3 grid-cols-1 pt-4">
           <div className="sm:col-span-1 mx-auto">
             <div className="rounded-xl">
               <img
@@ -41,7 +41,7 @@ const MovieDetails = () => {
                 className="w-[300px] h-[400px] rounded-xl object-cover"
               />
             </div>
-            <div className="font-poppins font-medium uppercase text-xl pt-4">
+            <div className="font-poppins font-medium uppercase text-xl py-4">
               <h2 className="py-1">
                 <span className="text-white">Episodes</span>{" "}
                 <span className="text-yellow-400 ">
@@ -69,7 +69,7 @@ const MovieDetails = () => {
                 <img
                   src={matchedMovies?.poster}
                   alt={matchedMovies?.movieName}
-                  className="w-full sm:w-[750px] h-[400px] object-cover"
+                  className="w-full sm:w-[750px] sm:h-[400px] h-[300px]  object-cover"
                 />
                 <div className="absolute top-[40%] left-[35%]">
                   <p className="flex text-xl  font-roboto font-bold tracking-wider text-white sm:text-2xl  text-center hover:cursor-pointer">
@@ -78,7 +78,7 @@ const MovieDetails = () => {
                   </p>
                 </div>
               </div>
-              <div className="sm:border-l-2 border-[#029AFA] pl-8">
+              <div className="sm:border-l-2 border-[#029AFA] px-8 ">
                 <p className="text-white text-[18px] font-poppins font-normal leading-loose mt-4">
                   {matchedMovies?.description}
                 </p>

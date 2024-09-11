@@ -100,7 +100,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="container mt-10 border-t   pt-6 text-center text-sm">
-          <p>Copyright &copy; 2024 movieworld ALL Rights Reserved.</p>
+          <p>Copyright &copy; 2024 Movie World ALL Rights Reserved.</p>
         </div>
       </footer>
     </div>

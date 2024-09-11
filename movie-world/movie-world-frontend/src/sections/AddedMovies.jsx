@@ -28,7 +28,7 @@ const AddedMovies = () => {
           <span className="text-[#F5C519]">Movies </span>
         </h1>
       </div>
-      <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 max-md:px-8 gap-4">
+      <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4">
         {myMovies.map((movie) => (
           <div
             key={movie._id}

@@ -50,7 +50,7 @@ const App = () => {
     }
   ]);
   return (
-    <div>
+    <div className="overflow-x-hidden ">
       <RouterProvider router={router} />
     </div>
   );
