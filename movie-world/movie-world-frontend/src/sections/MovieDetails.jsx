@@ -11,7 +11,7 @@ const MovieDetails = () => {
   const [movies, setMovies] = useState([]);
   const [matchedMovies, setMatchedMovies] = useState({});
   useEffect(() => {
-    fetch(`/api/v1/movies/all`)
+    fetch(`${import.meta.env.VITE_SERVER}/api/v1/movies/all`)
       .then((res) => res.json())
       .then((data) => {
         setMovies(data.data);
