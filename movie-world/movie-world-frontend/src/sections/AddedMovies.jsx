@@ -6,7 +6,7 @@ const AddedMovies = () => {
   const [movies, setMovies] = useState([]);
   const [myMovies, setMyMovies] = useState([]);
   useEffect(() => {
-    fetch(`/api/v1/movies/all`)
+    fetch(`${import.meta.env.VITE_SERVER}/api/v1/movies/all`)
       .then((res) => res.json())
       .then((data) => {
         setMovies(data.data);
@@ -28,7 +28,7 @@ const AddedMovies = () => {
           <span className="text-[#F5C519]">Movies </span>
         </h1>
       </div>
-      <div className="mt-12 grid grid-cols-1 sm:grid-cols-3  gap-4">
+      <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 max-md:px-8 gap-4">
         {myMovies.map((movie) => (
           <div
             key={movie._id}

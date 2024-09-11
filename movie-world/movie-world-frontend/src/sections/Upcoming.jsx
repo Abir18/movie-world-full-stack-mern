@@ -5,7 +5,7 @@ const Upcoming = () => {
   const [upcomingMovies, setUpcomingMovies] = useState([]);
   // console.log(upcomingMovies, "upcomingMovies");
   useEffect(() => {
-    fetch(`/api/v1/movies/all-upcoming`)
+    fetch(`${import.meta.env.VITE_SERVER}/api/v1/movies/all-upcoming`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data, "data");

@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 const AllMovies = () => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
-    fetch(`/api/v1/movies/all`)
+    fetch(`${import.meta.env.VITE_SERVER}/api/v1/movies/all`)
       .then((res) => res.json())
       .then((data) => {
         setMovies(data.data);
@@ -32,10 +32,6 @@ const AllMovies = () => {
     //   });
   };
 
-  const myFunc = () => {
-    alert("Func");
-  };
-
   return (
     <div className="bg-gradient-to-r from-slate-900 to-black min-h-screen ">
       <div className="flex flex-col justify-center items-center">
@@ -49,10 +45,10 @@ const AllMovies = () => {
           movies.map((movie) => (
             <div
               key={movie._id}
-              className="bg-slate-200 bg-opacity-20 rounded-xl  "
+              className="bg-slate-200 bg-opacity-20 rounded-xl max-sm:w-[250px] mx-auto"
             >
               <img
-                className=" w-[150px] h-[200px] sm:h-[400px] sm:w-[400px] rounded-t-xl object-cover"
+                className="h-[200px] sm:h-[400px] sm:w-[400px] w-full rounded-t-xl sm:object-cover"
                 src={movie.poster}
                 alt={movie.movieName}
               />

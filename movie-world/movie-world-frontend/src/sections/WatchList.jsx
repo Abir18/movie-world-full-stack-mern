@@ -38,7 +38,7 @@ export const WatchList = () => {
   const [myWatchListMovies, setMyWatchListMovies] = useState([]);
 
   const fetchAllMovies = useCallback(() => {
-    fetch(`/api/v1/movies/all`)
+    fetch(`${import.meta.env.VITE_SERVER}/api/v1/movies/all`)
       .then((res) => res.json())
       .then((data) => {
         setMovies(data.data);
